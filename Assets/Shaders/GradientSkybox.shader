@@ -1,4 +1,6 @@
-﻿Shader "Custom/GradientSkybox" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/GradientSkybox" {
     Properties {
         _Color1 ("Color 1", Color) = (1, 1, 1, 0)
         _Color2 ("Color 2", Color) = (1, 1, 1, 0)
@@ -35,7 +37,7 @@
             v2f vert(appdata v)
             {
                 v2f o;
-                o.pos = mul (UNITY_MATRIX_MVP, v.pos);
+                o.pos = UnityObjectToClipPos (v.pos);
                 o.uvw = v.uvw;
                 return o;
             }

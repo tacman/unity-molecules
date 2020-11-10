@@ -1,4 +1,6 @@
-﻿Shader "Custom/HorizontalSkybox" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/HorizontalSkybox" {
     Properties {
         _Color1 ("Top Color", Color) = (1, 1, 1, 0)
         _Color2 ("Horizon Color", Color) = (1, 1, 1, 0)
@@ -32,7 +34,7 @@
             v2f vert(appdata v)
             {
                 v2f o;
-                o.pos = mul (UNITY_MATRIX_MVP, v.pos);
+                o.pos = UnityObjectToClipPos (v.pos);
                 o.uvw = v.uvw;
                 return o;
             }
